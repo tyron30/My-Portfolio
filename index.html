@@ -226,7 +226,33 @@
 
   <section id="about" class="reveal">
     <h2>About Me</h2>
-    <p>I am a motivated IT professional with experience in technical support, system maintenance, networking, and customer service. I aim to continuously improve my skills while contributing to organizational growth.</p>
+    <p>I am a motivated Bachelor of Science in Information Technology graduate with hands-on experience in IT technical support, system maintenance, networking, and customer service. I am passionate about solving technical problems, supporting users, and continuously improving my skills to contribute effectively to organizational growth.</p>
+  </section>
+
+  <section id="education" class="reveal">
+    <h2>Educational Attainment</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Bachelor of Science in Information Technology</h3>
+        <p>Asian Development Foundation College</p>
+        <p>Tacloban City | 2021 – 2025</p>
+      </div>
+      <div class="card">
+        <h3>Senior High School (STEM – With Honors)</h3>
+        <p>San Miguel National High School</p>
+        <p>2019 – 2021</p>
+      </div>
+      <div class="card">
+        <h3>Junior High School</h3>
+        <p>San Miguel National High School</p>
+        <p>2015 – 2019</p>
+      </div>
+      <div class="card">
+        <h3>Elementary</h3>
+        <p>San Miguel Central School</p>
+        <p>2009 – 2015</p>
+      </div>
+    </div>
   </section>
 
   <section id="skills" class="reveal">
@@ -260,23 +286,199 @@
   <section id="projects" class="reveal">
     <h2>Projects</h2>
     <div class="grid">
-      <div class="card">
-        <h3>Employee Leave & Schedule Management System</h3>
-        <p>Capstone project designed to automate employee leave requests, approvals, scheduling, and reporting.</p>
-        <p><strong>Tech:</strong> PHP, MySQL, HTML, CSS</p>
-        <a class="btn" href="https://mcdo.infinityfreeapp.com" target="_blank">Live Demo</a>
-      </div>
-     
-  </section>
 
-  <section id="experience" class="reveal">
-    <h2>Experience</h2>
-    <div class="grid">
-      <div class="card"><h3>IT Technical Support</h3><p>Provincial Government of Leyte (2025)</p></div>
-      <div class="card"><h3>IT Intern</h3><p>Tacloban City Police Office (2025)</p></div>
-      <div class="card"><h3>Service Crew</h3><p>McDonald's Real Tacloban (2024–2025)</p></div>
+      <div class="card flip-card">
+        <div class="flip-front">
+          <h3>Employee Leave & Schedule Management System</h3>
+          <p>Capstone Project</p>
+        </div>
+        <div class="flip-back">
+          <h3>Capstone System</h3>
+          <p>A web-based system that automates employee leave requests, approvals, scheduling, notifications, and reporting.</p>
+          <p><strong>Tech:</strong> PHP, MySQL, HTML, CSS</p>
+          <a class="btn" href="https://mcdo.infinityfreeapp.com" target="_blank">Live Demo</a>
+        </div>
+      </div>
+
+      <div class="card flip-card">
+        <div class="flip-front">
+          <h3>IT Support Ticket System</h3>
+          <p>Sample Project</p>
+        </div>
+        <div class="flip-back">
+          <h3>IT Support Ticket System</h3>
+          <p>A simple ticketing system to log, track, and resolve IT-related issues.</p>
+          <p><strong>Tech:</strong> PHP, MySQL</p>
+        </div>
+      </div>
+
+      <div class="card flip-card">
+        <div class="flip-front">
+          <h3>Network Monitoring Dashboard</h3>
+          <p>Concept Project</p>
+        </div>
+        <div class="flip-back">
+          <h3>Network Monitoring Dashboard</h3>
+          <p>A dashboard concept for monitoring network devices, uptime, and system health.</p>
+          <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <style>
+    .flip-card {
+      position: relative;
+      height: 260px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      padding: 25px;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      transition: transform 0.8s ease;
+    }
+
+    .flip-front {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .flip-back {
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(2,6,23,0.95));
+      transform: rotateY(180deg);
+      font-size: 0.9rem;
+    }
+
+    .flip-card.active .flip-front {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card.active .flip-back {
+      transform: rotateY(360deg);
+    }
+  </style>
+
+  <script>
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('active');
+      });
+    });
+  </script>
+
+  <section id="experience" class="reveal">
+    <h2>Work Experience</h2>
+    <div class="grid">
+
+      <div class="card experience-card">
+        <div class="exp-front">
+          <h3>IT Technical Support</h3>
+          <p>Provincial Government of Leyte</p>
+        </div>
+        <div class="exp-back">
+          <h3>IT Technical Support</h3>
+          <p><strong>Duration:</strong> June 2025 – December 2025 (6 months)</p>
+          <ul>
+            <li>Provided hardware and software troubleshooting support</li>
+            <li>Performed system maintenance and basic network troubleshooting</li>
+            <li>Assisted employees with technical concerns and system issues</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card experience-card">
+        <div class="exp-front">
+          <h3>IT Intern</h3>
+          <p>Tacloban City Police Office</p>
+        </div>
+        <div class="exp-back">
+          <h3>IT Intern</h3>
+          <p><strong>Duration:</strong> February 2025 – April 2025 (3 months)</p>
+          <ul>
+            <li>Assisted in computer setup, maintenance, and troubleshooting</li>
+            <li>Provided basic network and technical support</li>
+            <li>Supported IT staff in daily operations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card experience-card">
+        <div class="exp-front">
+          <h3>Service Crew</h3>
+          <p>McDonald's Real Tacloban</p>
+        </div>
+        <div class="exp-back">
+          <h3>Service Crew</h3>
+          <p><strong>Duration:</strong> April 2024 – February 2025 (10 months)</p>
+          <ul>
+            <li>Delivered quality customer service in a fast-paced environment</li>
+            <li>Handled POS transactions and cash management</li>
+            <li>Maintained cleanliness and operational standards</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <style>
+    .experience-card {
+      position: relative;
+      height: 260px;
+      perspective: 1000px;
+    }
+
+    .experience-card .exp-front,
+    .experience-card .exp-back {
+      position: absolute;
+      inset: 0;
+      padding: 25px;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      transition: transform 0.8s ease;
+    }
+
+    .experience-card .exp-front {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .experience-card .exp-back {
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(2,6,23,0.95));
+      transform: rotateY(180deg);
+      font-size: 0.9rem;
+    }
+
+    .experience-card:hover .exp-front {
+      transform: rotateY(180deg);
+    }
+
+    .experience-card:hover .exp-back {
+      transform: rotateY(360deg);
+    }
+
+    .experience-card ul {
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    .experience-card li {
+      margin-bottom: 6px;
+    }
+  </style>
 
   <section id="contact" class="reveal">
     <h2>Contact</h2>
