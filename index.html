@@ -333,6 +333,74 @@
     </div>
   </section>
 
+<section id="work" class="reveal">
+  <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Work Experience</h2>
+  <div class="grid">
+
+    <!-- IT Technical Support -->
+    <div class="card work-card">
+      <h3 style="color: var(--accent); cursor: pointer;" onclick="toggleWork(this)">
+        IT Technical Support <span style="font-size:0.8rem; color: var(--text);">- Provincial Government of Leyte</span>
+      </h3>
+      <div class="work-desc" style="display:none; margin-top:10px; font-size:0.85rem; line-height:1.6; opacity:0.9;">
+        <ul>
+          <li>Handled technical support for government systems and special projects.</li>
+          <li>Installed, configured, and maintained hardware and software.</li>
+          <li>Managed network troubleshooting and optimization.</li>
+          <li>Duration: June 2025 – December 2025 (7 months)</li>
+        </ul>
+      </div>
+    </div>
+
+ <!-- IT Intern -->
+    <div class="card work-card">
+      <h3 style="color: var(--accent); cursor: pointer;" onclick="toggleWork(this)">
+        IT Intern <span style="font-size:0.8rem; color: var(--text);">- Tacloban City Police Office</span>
+      </h3>
+      <div class="work-desc" style="display:none; margin-top:10px; font-size:0.85rem; line-height:1.6; opacity:0.9;">
+        <ul>
+          <li>Assisted in IT support for internal office operations.</li>
+          <li>Performed hardware/software troubleshooting and network setup.</li>
+          <li>Duration: February 2025 – April 2025 (3 months)</li>
+        </ul>
+      </div>
+    </div>
+    
+
+    <!-- Service Crew -->
+    <div class="card work-card">
+      <h3 style="color: var(--accent); cursor: pointer;" onclick="toggleWork(this)">
+        Service Crew <span style="font-size:0.8rem; color: var(--text);">- McDonald’s Real Tacloban</span>
+      </h3>
+      <div class="work-desc" style="display:none; margin-top:10px; font-size:0.85rem; line-height:1.6; opacity:0.9;">
+        <ul>
+          <li>Provided customer service and order management efficiently.</li>
+          <li>Maintained cleanliness and safety in work area.</li>
+          <li>Assisted with inventory management and daily operations.</li>
+          <li>Duration: April 2024 – February 2025 (11 months)</li>
+        </ul>
+      </div>
+    </div>
+
+   
+
+  </div>
+</section>
+
+<script>
+  // Toggle work experience details
+  function toggleWork(header){
+    const desc = header.nextElementSibling;
+    if(desc.style.display === "none"){
+      desc.style.display = "block";
+    } else {
+      desc.style.display = "none";
+    }
+  }
+</script>
+
+  
+
   <section id="contact" class="reveal" style="text-align: center; min-height: 70vh; display: flex; flex-direction: column; justify-content: center;">
     <h2 style="font-size: 3rem; margin-bottom: 20px;">Let's Connect</h2>
     <p style="max-width: 600px; margin: 0 auto;">Currently looking for opportunities in IT Technical Support, Networking, and Web Development. Feel free to reach out!</p>
