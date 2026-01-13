@@ -93,8 +93,38 @@
       position: relative;
       transition: 0.4s;
     }
-    .card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.06); border-color: var(--accent); }
+    .card:hover { 
+      transform: translateY(-10px); 
+      background: rgba(255,255,255,0.06); 
+      border-color: var(--accent); 
+      box-shadow: 0 15px 30px rgba(34,211,238,0.1);
+    }
     
+    /* WORK EXPERIENCE HOVER LOGIC */
+    .work-card .work-desc {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .work-card:hover .work-desc {
+      max-height: 500px; /* Adjust if content is longer */
+      opacity: 1;
+      margin-top: 20px;
+    }
+
+    .work-card ul {
+      list-style-position: inside;
+      padding-left: 5px;
+    }
+
+    .work-card li {
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
     .badge {
       position: absolute;
       top: -12px;
@@ -215,6 +245,7 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#work">Experience</a></li>
       <li><a href="#certificates">Certificates</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -291,6 +322,58 @@
     </div>
   </section>
 
+  <section id="work" class="reveal">
+    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Work Experience</h2>
+    <p style="text-align: center; opacity: 0.6; margin-top: -30px; margin-bottom: 40px;">Hover over a card to view details</p>
+    
+    <div class="grid">
+      <div class="card work-card">
+        <h3 style="color: var(--accent);">
+          IT Technical Support <br>
+          <span style="font-size:0.8rem; color: var(--text); opacity: 0.7;">Provincial Government of Leyte</span>
+        </h3>
+        <div class="work-desc">
+          <ul>
+            <li>Handled technical support for government systems and special projects.</li>
+            <li>Installed, configured, and maintained hardware and software.</li>
+            <li>Managed network troubleshooting and optimization.</li>
+            <li><strong>Duration:</strong> June 2025 – December 2025</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card work-card">
+        <h3 style="color: var(--accent);">
+          IT Intern <br>
+          <span style="font-size:0.8rem; color: var(--text); opacity: 0.7;">Tacloban City Police Office</span>
+        </h3>
+        <div class="work-desc">
+          <ul>
+            <li>Assisted in IT support for internal office operations.</li>
+            <li>Performed hardware/software troubleshooting and network setup.</li>
+            <li>Managed data entry and digital record maintenance.</li>
+            <li><strong>Duration:</strong> Feb 2025 – April 2025</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card work-card">
+        <h3 style="color: var(--accent);">
+          Service Crew <br>
+          <span style="font-size:0.8rem; color: var(--text); opacity: 0.7;">McDonald’s Real Tacloban</span>
+        </h3>
+        <div class="work-desc">
+          <ul>
+            <li>Provided customer service and order management efficiently.</li>
+            <li>Maintained cleanliness and safety in work area.</li>
+            <li>Assisted with inventory management and daily operations.</li>
+            <li><strong>Duration:</strong> April 2024 – Feb 2025</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="certificates" class="reveal">
     <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Official Certifications</h2>
     <p style="opacity: 0.7;">Verified credentials from TESDA, DICT, and Cisco.</p>
@@ -333,74 +416,6 @@
     </div>
   </section>
 
-<section id="work" class="reveal">
-  <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Work Experience</h2>
-  <div class="grid">
-
-    <!-- IT Technical Support -->
-    <div class="card work-card">
-      <h3 style="color: var(--accent); cursor: pointer;" onclick="toggleWork(this)">
-        IT Technical Support <span style="font-size:0.8rem; color: var(--text);">- Provincial Government of Leyte</span>
-      </h3>
-      <div class="work-desc" style="display:none; margin-top:10px; font-size:0.85rem; line-height:1.6; opacity:0.9;">
-        <ul>
-          <li>Handled technical support for government systems and special projects.</li>
-          <li>Installed, configured, and maintained hardware and software.</li>
-          <li>Managed network troubleshooting and optimization.</li>
-          <li>Duration: June 2025 – December 2025 (7 months)</li>
-        </ul>
-      </div>
-    </div>
-
- <!-- IT Intern -->
-    <div class="card work-card">
-      <h3 style="color: var(--accent); cursor: pointer;" onclick="toggleWork(this)">
-        IT Intern <span style="font-size:0.8rem; color: var(--text);">- Tacloban City Police Office</span>
-      </h3>
-      <div class="work-desc" style="display:none; margin-top:10px; font-size:0.85rem; line-height:1.6; opacity:0.9;">
-        <ul>
-          <li>Assisted in IT support for internal office operations.</li>
-          <li>Performed hardware/software troubleshooting and network setup.</li>
-          <li>Duration: February 2025 – April 2025 (3 months)</li>
-        </ul>
-      </div>
-    </div>
-    
-
-    <!-- Service Crew -->
-    <div class="card work-card">
-      <h3 style="color: var(--accent); cursor: pointer;" onclick="toggleWork(this)">
-        Service Crew <span style="font-size:0.8rem; color: var(--text);">- McDonald’s Real Tacloban</span>
-      </h3>
-      <div class="work-desc" style="display:none; margin-top:10px; font-size:0.85rem; line-height:1.6; opacity:0.9;">
-        <ul>
-          <li>Provided customer service and order management efficiently.</li>
-          <li>Maintained cleanliness and safety in work area.</li>
-          <li>Assisted with inventory management and daily operations.</li>
-          <li>Duration: April 2024 – February 2025 (11 months)</li>
-        </ul>
-      </div>
-    </div>
-
-   
-
-  </div>
-</section>
-
-<script>
-  // Toggle work experience details
-  function toggleWork(header){
-    const desc = header.nextElementSibling;
-    if(desc.style.display === "none"){
-      desc.style.display = "block";
-    } else {
-      desc.style.display = "none";
-    }
-  }
-</script>
-
-  
-
   <section id="contact" class="reveal" style="text-align: center; min-height: 70vh; display: flex; flex-direction: column; justify-content: center;">
     <h2 style="font-size: 3rem; margin-bottom: 20px;">Let's Connect</h2>
     <p style="max-width: 600px; margin: 0 auto;">Currently looking for opportunities in IT Technical Support, Networking, and Web Development. Feel free to reach out!</p>
@@ -410,7 +425,6 @@
       <a href="tel:09637008597" class="btn btn-outline"><i class="fas fa-phone"></i> 0963 700 8597</a>
     </div>
 
-    <!-- Social Media Links -->
     <div class="social-links reveal">
       <a href="https://facebook.com/tyron.delvalle.3304" target="_blank" data-tooltip="Facebook">
         <i class="fab fa-facebook-f"></i>
@@ -450,4 +464,3 @@
 
 </body>
 </html>
-
