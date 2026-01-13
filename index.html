@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tyron Del Valle | IT Portfolio</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
     :root {
@@ -32,22 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* Floating background */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(34,211,238,0.15), transparent 60%),
-                  radial-gradient(circle at bottom left, rgba(108,99,255,0.15), transparent 60%);
-      animation: moveBg 25s linear infinite;
-      z-index: -1;
-    }
-
-    @keyframes moveBg {
-      from { transform: translateY(0); }
-      to { transform: translateY(-200px); }
-    }
-
     /* Navbar */
     nav {
       position: fixed;
@@ -62,67 +46,21 @@
       z-index: 100;
     }
 
-    nav h1 {
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+    nav h1 { color: var(--accent); font-weight: 700; }
+    nav ul { list-style: none; display: flex; gap: 25px; }
+    nav ul li a { text-decoration: none; color: var(--text); font-size: 0.9rem; transition: 0.3s; }
+    nav ul li a:hover { color: var(--accent); }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
+    /* Hero Section */
+    section { padding: 120px 8% 80px; min-height: 100vh; }
+    .hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center; gap: 40px; }
+    .hero h2 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2; }
+    .hero h2 span { color: var(--accent); }
+    .tagline { color: var(--accent); font-weight: 600; margin-bottom: 10px; display: block; }
+    .hero p { margin: 20px 0; opacity: 0.9; line-height: 1.6; }
 
-    nav ul li a {
-      text-decoration: none;
-      color: var(--text);
-      font-size: 0.9rem;
-      position: relative;
-    }
-
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: 0.3s;
-    }
-
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    section {
-      padding: 120px 8% 80px;
-      min-height: 100vh;
-    }
-
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      align-items: center;
-      gap: 40px;
-    }
-
-    .hero h2 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.2;
-    }
-
-    .hero h2 span {
-      color: var(--accent);
-    }
-
-    .hero p {
-      margin: 20px 0;
-      opacity: 0.9;
-    }
-
+    /* Buttons */
+    .btn-container { display: flex; gap: 15px; flex-wrap: wrap; }
     .btn {
       display: inline-block;
       padding: 12px 30px;
@@ -131,64 +69,47 @@
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: 0.3s;
     }
-
-    .btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 40px rgba(34,211,238,0.4);
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
     }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(34,211,238,0.3); }
 
-    /* Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
-    }
-
+    /* Badges & Cards */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 20px;
       padding: 25px;
-      backdrop-filter: blur(15px);
-      transition: transform 0.4s, box-shadow 0.4s;
+      position: relative;
+      transition: 0.4s;
+    }
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: #facc15;
+      color: #000;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
     }
 
-    .card:hover {
-      transform: perspective(800px) rotateX(8deg) rotateY(-8deg) translateY(-10px);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-    }
+    /* Tech Stack Icons */
+    .tech-icons { display: flex; gap: 15px; margin-top: 15px; font-size: 1.5rem; color: var(--accent); }
 
-    .card h3 {
-      margin-bottom: 10px;
-      color: var(--accent);
-    }
+    /* Animations */
+    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: rgba(2,6,23,0.8);
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    footer p {
-      opacity: 0.7;
-      font-size: 0.85rem;
-    }
-
-    /* Scroll animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(60px);
-      transition: all 0.8s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
   </style>
 </head>
@@ -200,308 +121,108 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <section id="home" class="hero">
     <div>
+      <span class="tagline">IT Support | Networking | Systems Developer</span>
       <h2>Hi, I'm <span>Tyron Del Valle</span></h2>
-      <p>BS Information Technology Graduate passionate about IT Support, Networking, Troubleshooting, and modern digital solutions.</p>
-      <a href="#projects" class="btn">View Projects</a>
-    </div>
-    <div>
-      <img src="profile.jpg" alt="Tyron Del Valle" style="width:280px;max-width:100%;border-radius:50%;border:4px solid var(--accent);box-shadow:0 20px 50px rgba(34,211,238,.4);animation: float 4s ease-in-out infinite;" />
-    </div>
-  </section>
-
-  <style>
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0); }
-    }
-  </style>
-
-  <section id="about" class="reveal">
-    <h2>About Me</h2>
-    <p>I am a motivated Bachelor of Science in Information Technology graduate with hands-on experience in IT technical support, system maintenance, networking, and customer service. I am passionate about solving technical problems, supporting users, and continuously improving my skills to contribute effectively to organizational growth.</p>
-  </section>
-
-  <section id="education" class="reveal">
-    <h2>Educational Attainment</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Bachelor of Science in Information Technology</h3>
-        <p>Asian Development Foundation College</p>
-        <p>Tacloban City | 2021 – 2025</p>
-      </div>
-      <div class="card">
-        <h3>Senior High School (STEM – With Honors)</h3>
-        <p>San Miguel National High School</p>
-        <p>2019 – 2021</p>
-      </div>
-      <div class="card">
-        <h3>Junior High School</h3>
-        <p>San Miguel National High School</p>
-        <p>2015 – 2019</p>
-      </div>
-      <div class="card">
-        <h3>Elementary</h3>
-        <p>San Miguel Central School</p>
-        <p>2009 – 2015</p>
+      <p>BS Information Technology Graduate from Asian Development Foundation College. Passionate about troubleshooting, network security, and developing efficient web solutions.</p>
+      
+      <div class="btn-container">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="my updated resume.pdf" class="btn btn-outline" download><i class="fas fa-file-download"></i> Download CV</a>
       </div>
     </div>
-  </section>
-
-  <section id="skills" class="reveal">
-    <h2>Skills</h2>
-    <div class="grid">
-      <div class="card"><h3>IT Support</h3><p>Hardware & software troubleshooting, remote support.</p></div>
-      <div class="card"><h3>Networking</h3><p>Network configuration, monitoring, and troubleshooting.</p></div>
-      <div class="card"><h3>Programming</h3><p>PHP & MySQL fundamentals.</p></div>
-      <div class="card"><h3>Customer Service</h3><p>Professional communication and user assistance.</p></div>
-    </div>
-  </section>
-
-  <section id="certificates" class="reveal">
-    <h2>Certificates & Trainings</h2>
-    <div class="grid">
-      <div class="card"><h3>Introduction to Cybersecurity</h3><p>Cisco Networking Academy</p></div>
-      <div class="card"><h3>Computer Systems Servicing NC II</h3><p>TESDA</p></div>
-      <div class="card"><h3>Photography NC II</h3><p>TESDA</p></div>
-      <div class="card"><h3>Food and Beverage Services NC II</h3><p>TESDA</p></div>
-      <div class="card"><h3>Electronic Products Assembly and Servicing NC II</h3><p>TESDA</p></div>
-      <div class="card"><h3>Omada Certified Network Administrator (OCNA)</h3><p>TP-Link</p></div>
-      <div class="card"><h3>VIGI Certified Security Administrator (VCSA)</h3><p>TP-Link</p></div>
-      <div class="card"><h3>Cyber Hygiene 101</h3><p>DICT</p></div>
-      <div class="card"><h3>A Guide to Digital Literacy</h3><p>DICT</p></div>
-      <div class="card"><h3>Introduction to Generative AI Script</h3><p>DICT</p></div>
-      <div class="card"><h3>The Basics of Prompt Engineering</h3><p>DICT</p></div>
-      <div class="card"><h3>The Path to Better Digital Citizenship</h3><p>DICT</p></div>
+    <div style="text-align: center;">
+      <img src="profile.jpg" alt="Tyron Del Valle" style="width:280px; border-radius:50%; border:4px solid var(--accent); animation: float 4s ease-in-out infinite;" />
     </div>
   </section>
 
   <section id="projects" class="reveal">
-    <h2>Projects</h2>
+    <h2>Featured Work</h2>
     <div class="grid">
-
-      <div class="card flip-card">
-        <div class="flip-front">
-          <h3>Employee Leave & Schedule Management System</h3>
-          <p>Capstone Project</p>
+      <div class="card">
+        <span class="badge">⭐ Featured Capstone</span>
+        <h3>Leave & Schedule System</h3>
+        <p>A comprehensive web-based system for managing employee leave and scheduling.</p>
+        <div class="tech-icons">
+          <i class="fab fa-php"></i>
+          <i class="fas fa-database"></i>
+          <i class="fab fa-html5"></i>
+          <i class="fab fa-css3-alt"></i>
         </div>
-        <div class="flip-back">
-          <h3>Capstone System</h3>
-          <p>A web-based system that automates employee leave requests, approvals, scheduling, notifications, and reporting.</p>
-          <p><strong>Tech:</strong> PHP, MySQL, HTML, CSS</p>
-          <a class="btn" href="https://mcdo.infinityfreeapp.com" target="_blank">Live Demo</a>
+        <br>
+        <a href="https://mcdo.infinityfreeapp.com" target="_blank" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">Live Demo</a>
+      </div>
+      
+      <div class="card">
+        <h3>IT Support Ticket System</h3>
+        <p>Logging and tracking technical issues for efficient resolution.</p>
+        <div class="tech-icons">
+          <i class="fab fa-php"></i>
+          <i class="fas fa-server"></i>
         </div>
       </div>
-
-      <div class="card flip-card">
-        <div class="flip-front">
-          <h3>IT Support Ticket System</h3>
-          <p>Sample Project</p>
-        </div>
-        <div class="flip-back">
-          <h3>IT Support Ticket System</h3>
-          <p>A simple ticketing system to log, track, and resolve IT-related issues.</p>
-          <p><strong>Tech:</strong> PHP, MySQL</p>
-        </div>
-      </div>
-
-      <div class="card flip-card">
-        <div class="flip-front">
-          <h3>Network Monitoring Dashboard</h3>
-          <p>Concept Project</p>
-        </div>
-        <div class="flip-back">
-          <h3>Network Monitoring Dashboard</h3>
-          <p>A dashboard concept for monitoring network devices, uptime, and system health.</p>
-          <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <style>
-    .flip-card {
-      position: relative;
-      height: 260px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-
-    .flip-front,
-    .flip-back {
-      position: absolute;
-      inset: 0;
-      padding: 25px;
-      border-radius: 20px;
-      backface-visibility: hidden;
-      transition: transform 0.8s ease;
-    }
-
-    .flip-front {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .flip-back {
-      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(2,6,23,0.95));
-      transform: rotateY(180deg);
-      font-size: 0.9rem;
-    }
-
-    .flip-card.active .flip-front {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card.active .flip-back {
-      transform: rotateY(360deg);
-    }
-  </style>
-
-  <script>
-    document.querySelectorAll('.flip-card').forEach(card => {
-      card.addEventListener('click', () => {
-        card.classList.toggle('active');
-      });
-    });
-  </script>
-
-  <section id="experience" class="reveal">
-    <h2>Work Experience</h2>
+  <section id="certificates" class="reveal">
+    <h2>Certifications</h2>
     <div class="grid">
-
-      <div class="card experience-card">
-        <div class="exp-front">
-          <h3>IT Technical Support</h3>
-          <p>Provincial Government of Leyte</p>
-        </div>
-        <div class="exp-back">
-          <h3>IT Technical Support</h3>
-          <p><strong>Duration:</strong> June 2025 – December 2025 (6 months)</p>
-          <ul>
-            <li>Provided hardware and software troubleshooting support</li>
-            <li>Performed system maintenance and basic network troubleshooting</li>
-            <li>Assisted employees with technical concerns and system issues</li>
-          </ul>
-        </div>
+      <div class="card">
+        <h4><i class="fas fa-shield-alt"></i> IT & Cybersecurity</h4>
+        <ul style="list-style: none; font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">
+          <li>• Cisco Introduction to Cybersecurity</li>
+          <li>• DICT Cyber Hygiene 101</li>
+          <li>• TP-Link Omada Certified (OCNA)</li>
+        </ul>
       </div>
-
-      <div class="card experience-card">
-        <div class="exp-front">
-          <h3>IT Intern</h3>
-          <p>Tacloban City Police Office</p>
-        </div>
-        <div class="exp-back">
-          <h3>IT Intern</h3>
-          <p><strong>Duration:</strong> February 2025 – April 2025 (3 months)</p>
-          <ul>
-            <li>Assisted in computer setup, maintenance, and troubleshooting</li>
-            <li>Provided basic network and technical support</li>
-            <li>Supported IT staff in daily operations</li>
-          </ul>
-        </div>
+      <div class="card">
+        <h4><i class="fas fa-tools"></i> TESDA Certified</h4>
+        <ul style="list-style: none; font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">
+          <li>• Computer Systems Servicing NC II</li>
+          <li>• Electronic Products Assembly NC II</li>
+          <li>• Photography NC II</li>
+        </ul>
       </div>
-
-      <div class="card experience-card">
-        <div class="exp-front">
-          <h3>Service Crew</h3>
-          <p>McDonald's Real Tacloban</p>
-        </div>
-        <div class="exp-back">
-          <h3>Service Crew</h3>
-          <p><strong>Duration:</strong> April 2024 – February 2025 (10 months)</p>
-          <ul>
-            <li>Delivered quality customer service in a fast-paced environment</li>
-            <li>Handled POS transactions and cash management</li>
-            <li>Maintained cleanliness and operational standards</li>
-          </ul>
-        </div>
+      <div class="card">
+        <h4><i class="fas fa-brain"></i> Digital & AI Literacy</h4>
+        <ul style="list-style: none; font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">
+          <li>• DICT Digital Literacy</li>
+          <li>• Basics of Prompt Engineering</li>
+          <li>• Intro to Generative AI Script</li>
+        </ul>
       </div>
-
     </div>
   </section>
 
-  <style>
-    .experience-card {
-      position: relative;
-      height: 260px;
-      perspective: 1000px;
-    }
-
-    .experience-card .exp-front,
-    .experience-card .exp-back {
-      position: absolute;
-      inset: 0;
-      padding: 25px;
-      border-radius: 20px;
-      backface-visibility: hidden;
-      transition: transform 0.8s ease;
-    }
-
-    .experience-card .exp-front {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .experience-card .exp-back {
-      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(2,6,23,0.95));
-      transform: rotateY(180deg);
-      font-size: 0.9rem;
-    }
-
-    .experience-card:hover .exp-front {
-      transform: rotateY(180deg);
-    }
-
-    .experience-card:hover .exp-back {
-      transform: rotateY(360deg);
-    }
-
-    .experience-card ul {
-      margin-top: 10px;
-      padding-left: 18px;
-    }
-
-    .experience-card li {
-      margin-bottom: 6px;
-    }
-  </style>
-
-  <section id="contact" class="reveal">
-    <h2>Contact</h2>
-    <p>Email: tyrondelvalle01@gmail.com</p>
-    <p>Phone: 0963 700 8597</p>
-    <p>Location: Libtong, San Miguel, Leyte</p>
+  <section id="contact" class="reveal" style="text-align: center; min-height: 50vh;">
+    <h2>Get In Touch</h2>
+    <p>Interested in working together? Let's connect.</p>
+    <div class="btn-container" style="justify-content: center; margin-top: 30px;">
+      <a href="mailto:tyrondelvalle01@gmail.com" class="btn"><i class="fas fa-envelope"></i> Email Me</a>
+      <p style="width: 100%; margin-top: 20px; opacity: 0.7;">📍 Libtong, San Miguel, Leyte | 📞 0963 700 8597</p>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2026 Tyron Del Valle | Creative IT Portfolio</p>
+  <footer style="text-align: center; padding: 40px; opacity: 0.6; font-size: 0.8rem;">
+    <p>© 2026 Tyron Del Valle | Built with Passion</p>
   </footer>
 
   <script>
     const reveals = document.querySelectorAll('.reveal');
-
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       reveals.forEach(r => {
         const top = r.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          r.classList.add('active');
-        }
+        if (top < window.innerHeight - 100) r.classList.add('active');
       });
-    });
+    };
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('load', handleScroll);
   </script>
 
 </body>
