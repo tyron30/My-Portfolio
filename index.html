@@ -107,6 +107,11 @@
     }
     .cert-img { width: 100%; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
 
+    /* Services Grid */
+    #services-grid {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
     /* Skills Badge */
     .skill-tag {
       display: inline-block; padding: 4px 12px; border-radius: 4px;
@@ -122,6 +127,16 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
     @media (max-width: 768px) {
       nav ul { display: none; }
@@ -137,6 +152,7 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#work">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#certificates">Credentials</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -307,6 +323,42 @@
     </div>
   </section>
 
+  <section id="services" class="reveal">
+    <h2 style="font-size: 2.5rem; margin-bottom: 10px; text-align: center;">IT Services & Inquiries</h2>
+    <p style="opacity: 0.7; margin-bottom: 30px; text-align: center;">Offering professional IT solutions tailored to your business needs. From custom systems to hardware support, let's discuss how I can assist you.</p>
+
+    <div style="text-align: center; margin-bottom: 30px;">
+      <button onclick="toggleServices()" class="btn btn-primary" id="services-btn">View Services Offered</button>
+    </div>
+
+    <div id="services-grid" style="display: none;">
+      <div class="card">
+        <i class="fas fa-code" style="color: var(--accent); font-size: 2rem; margin-bottom: 20px;"></i>
+        <h3>Custom IT Systems & Websites</h3>
+        <p style="font-size: 0.9rem; margin: 15px 0;">I specialize in developing secure and efficient custom IT systems tailored to your business needs, including promotional websites to enhance your online presence and management systems for streamlined operations. We can discuss specific features, pricing, and agreements to align with your requirements.</p>
+        <div class="skill-tag">Web Development</div> <div class="skill-tag">System Design</div> <div class="skill-tag">Database Management</div>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-tools" style="color: var(--accent); font-size: 2rem; margin-bottom: 20px;"></i>
+        <h3>Hardware & Software Support</h3>
+        <p style="font-size: 0.9rem; margin: 15px 0;">Offering professional hardware and software support services, such as Microsoft 365 installation, Windows activation, operating system upgrades or downgrades (e.g., Windows 8 to 10, Windows 11 Pro to 10), laptop/PC reset or formatting, laptop troubleshooting and repairs, and thorough cleaning to optimize performance and extend device lifespan.</p>
+        <div class="skill-tag">PC Maintenance</div> <div class="skill-tag">OS Upgrades</div> <div class="skill-tag">Hardware Repair</div>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-comments" style="color: var(--accent); font-size: 2rem; margin-bottom: 20px;"></i>
+        <h3>Inquire & Negotiate</h3>
+        <p style="font-size: 0.9rem; margin: 15px 0;">Ready to discuss your project or service needs? Contact me via Facebook, phone, or email to explore pricing, features, agreements, and any other details. Let's collaborate to bring your vision to life.</p>
+        <div class="btn-group" style="margin-top: 20px;">
+          <a href="https://www.facebook.com/share/17RFFbT3fj/?mibextid=wwXIfr" target="_blank" class="btn btn-primary"><i class="fab fa-facebook"></i> Chat on Facebook</a>
+          <a href="tel:09917824940" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+          <a href="mailto:tyrondelvalle01@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Email Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="certificates" class="reveal">
     <h2 style="margin-bottom: 40px; text-align: center;">Professional Credentials</h2>
     <div class="grid">
@@ -414,6 +466,19 @@
         gallery.style.display = "grid";
         text.innerText = "HIDE IMAGES";
         gallery.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function toggleServices() {
+      const grid = document.getElementById('services-grid');
+      const btn = document.getElementById('services-btn');
+      if (grid.style.display === "grid") {
+        grid.style.display = "none";
+        btn.innerText = "View Services Offered";
+      } else {
+        grid.style.display = "grid";
+        btn.innerText = "Hide Services";
+        grid.scrollIntoView({ behavior: 'smooth' });
       }
     }
   </script>
