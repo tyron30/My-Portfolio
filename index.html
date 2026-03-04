@@ -142,20 +142,92 @@
       nav ul { display: none; }
       section { padding: 80px 5% 40px; }
     }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+      color: var(--text);
+    }
+    .theme-toggle:hover {
+      border-color: var(--accent);
+    }
+
+    /* Light Mode */
+    body.light-mode {
+      --bg: #f8fafc;
+      --card: rgba(0, 0, 0, 0.03);
+      --text: #1e293b;
+      background: linear-gradient(rgba(248,250,252,0.95), rgba(248,250,252,0.98)), url('tech-bg.jpg') center/cover fixed no-repeat;
+    }
+    body.light-mode nav {
+      background: rgba(248,250,252,0.9);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    body.light-mode nav ul li a,
+    body.light-mode .hero h2 span {
+      color: #1e293b;
+    }
+    body.light-mode .card {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    body.light-mode .card:hover {
+      background: rgba(255,255,255,0.9);
+      border-color: var(--primary);
+    }
+    body.light-mode .work-card ul li,
+    body.light-mode .timeline-school {
+      color: #64748b;
+    }
+    body.light-mode .skill-tag {
+      background: rgba(108, 99, 255, 0.1);
+      color: var(--primary);
+    }
+    body.light-mode .view-proof {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    body.light-mode .view-proof:hover {
+      background: var(--primary);
+      color: white;
+    }
+    body.light-mode footer {
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    body.light-mode .timeline-content {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    body.light-mode .timeline-content:hover {
+      border-color: var(--primary);
+    }
   </style>
 </head>
 <body>
 
   <nav>
     <h1>TYRON.</h1>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#work">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#certificates">Credentials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#work">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#certificates">Credentials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Light/Dark Mode">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
   </nav>
 
   <section id="home" class="hero">
@@ -184,6 +256,108 @@
     </div>
   </section>
 
+  <section id="education" class="reveal">
+    <h2 style="margin-bottom: 40px; text-align: center;">Educational Attainment</h2>
+    <div style="max-width: 800px; margin: 0 auto;">
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">2021 – 2025</span>
+          <h3>Bachelor of Science in Information and Technology</h3>
+          <p class="timeline-school">Asian Development Foundation College</p>
+          <p class="timeline-desc">Tacloban City</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">2019 – 2021</span>
+          <h3>Senior High School - STEM (With Honors)</h3>
+          <p class="timeline-school">San Miguel National High School</p>
+          <p class="timeline-desc">San Miguel, Leyte</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">2015 – 2019</span>
+          <h3>Junior High School</h3>
+          <p class="timeline-school">San Miguel National High School</p>
+          <p class="timeline-desc">San Miguel, Leyte</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-date">2009 – 2015</span>
+          <h3>Elementary</h3>
+          <p class="timeline-school">San Miguel Central School</p>
+          <p class="timeline-desc">San Miguel, Leyte</p>
+        </div>
+      </div>
+
+    </div>
+
+    <style>
+      .timeline-item {
+        position: relative;
+        padding-left: 40px;
+        padding-bottom: 35px;
+        border-left: 2px solid rgba(34, 211, 238, 0.3);
+      }
+      .timeline-item:last-child {
+        border-left: 2px solid transparent;
+        padding-bottom: 0;
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -6px;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        background: var(--accent);
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+      }
+      .timeline-content {
+        background: var(--card);
+        padding: 20px 25px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.08);
+        transition: 0.3s;
+      }
+      .timeline-content:hover {
+        border-color: var(--accent);
+        transform: translateX(5px);
+      }
+      .timeline-date {
+        font-size: 0.75rem;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .timeline-content h3 {
+        font-size: 1.1rem;
+        margin: 8px 0 5px;
+        color: var(--text);
+      }
+      .timeline-school {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-bottom: 8px;
+      }
+      .timeline-desc {
+        font-size: 0.8rem;
+        opacity: 0.7;
+        line-height: 1.5;
+      }
+    </style>
+  </section>
+
   <section id="work" class="reveal">
     <h2 style="margin-bottom: 40px; text-align: center;">Professional Experience</h2>
     <div class="grid">
@@ -194,8 +368,8 @@
         <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 15px;">Provincial Government of Leyte</p>
         <div class="work-desc">
         <ul>
- <li>Supported digital system projects, assisting in full-cycle deployment from hardware installation to system go-live.</li>
-<li>Installed and deployed the Document Tracking System (DTS) in government offices.</li>
+          
+<li>Provided technical support and system handling for government digital platforms including QMER (Quick Medical Electronic Record), DTS (Document Tracking System), EBPLS (Electronic Business Permit and Licensing System), and E-Learning Platform. Successfully deployed and configured the Document Tracking System (DTS), while assisting in installation, troubleshooting, maintenance, and user support for the other systems.</li>
 <li>Configured and installed core infrastructure including Servers, Routers, Managed Switches, and Access Points (AP).</li>
 <li>Resolved critical system issues through remote desktop troubleshooting and on-site technical support.</li>
 <li>Performed network troubleshooting to help maintain high availability of government digital services.</li>
@@ -371,30 +545,43 @@
         <p id="nc2-btn-text" style="color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-top: 15px;">CLICK TO VIEW IMAGES</p>
       </div>
 
-      <div class="card">
+<div class="card">
         <h3><i class="fas fa-shield-halved" style="color: var(--accent); margin-right: 10px;"></i> Network & Security</h3>
         <ul class="cert-list">
-          <li>Omada Wireless <a href="Omada Certificate_Template_A4_OCNA Wireless_Tyron Del Valle.pdf" target="_blank" class="view-proof">View PDF</a></li>
-          <li>VIGI Security <a href="VIGI Certificates_Template_A4 size_VCSA_Tyron Del Valle.pdf" target="_blank" class="view-proof">View PDF</a></li>
+<li>Omada Wireless <a href="certificates/Omada Certificate_Template_A4_OCNA Wireless_Tyron Del Valle.pdf" target="_blank" class="view-proof">View PDF</a></li>
+          <li>VIGI Security <a href="certificates/VIGI Certificates_Template_A4 size_VCSA_Tyron Del Valle.pdf" target="_blank" class="view-proof">View PDF</a></li>
+          <li>Certificate of Participation <a href="certificates/Certificate of Participation.JPG" target="_blank" class="view-proof">View Image</a></li>
         </ul>
       </div>
 
       <div class="card">
         <h3><i class="fas fa-microchip" style="color: var(--accent); margin-right: 10px;"></i> DICT & AI</h3>
         <ul class="cert-list">
-          <li>Digital Literacy <a href="digital literacy.pdf" target="_blank" class="view-proof">View PDF</a></li>
-          <li>Cyber Hygiene 101 <a href="cyber hygiene 101.pdf" target="_blank" class="view-proof">View PDF</a></li>
-          <li>Prompt Engineering <a href="the basics of prompt engineering.pdf" target="_blank" class="view-proof">View PDF</a></li>
-          <li>Generative AI Script <a href="Introduction to Generative AI Script.pdf" target="_blank" class="view-proof">View PDF</a></li>
-          <li>Digital Citizenship <a href="The Path to Better Digital Citizenship.pdf" target="_blank" class="view-proof">View PDF</a></li>
+<li>Digital Literacy <a href="certificates/digital literacy.pdf" target="_blank" class="view-proof">View PDF</a></li>
+          <li>Cyber Hygiene 101 <a href="certificates/cyber hygiene 101.pdf" target="_blank" class="view-proof">View PDF</a></li>
+          <li>Prompt Engineering <a href="certificates/the basics of prompt engineering.pdf" target="_blank" class="view-proof">View PDF</a></li>
+          <li>Generative AI Script <a href="certificates/Introduction to Generative AI Script.pdf" target="_blank" class="view-proof">View PDF</a></li>
+          <li>Digital Citizenship <a href="certificates/The Path to Better Digital Citizenship.pdf" target="_blank" class="view-proof">View PDF</a></li>
         </ul>
+      </div>
+
+      <div class="card nc2-trigger" onclick="toggleSeminars()">
+        <i class="fas fa-graduation-cap" style="color: #facc15; font-size: 2.5rem; margin-bottom: 15px;"></i>
+        <h3>Seminars & Trainings</h3>
+        <p style="font-size: 0.8rem; opacity: 0.6;">Provincial Government of Leyte</p>
+        <p id="seminars-btn-text" style="color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-top: 15px;">CLICK TO VIEW IMAGES</p>
       </div>
     </div>
 
+<div id="seminars-gallery" style="display: none; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px; animation: fadeIn 0.5s ease;">
+      <div style="text-align: center;"><img src="certificates/BIPSU.jpg" class="cert-img" alt="BIPSU"><p>BIPSU</p></div>
+      <div style="text-align: center;"><img src="certificates/Capoocan.jpg" class="cert-img" alt="Capoocan"><p>Capoocan</p></div>
+    </div>
+
     <div id="nc2-gallery">
-      <div style="text-align: center;"><img src="CSS NCII.png" class="cert-img" alt="CSS NCII"><p>CSS NC II</p></div>
-      <div style="text-align: center;"><img src="EPAS NCII.png" class="cert-img" alt="EPAS NCII"><p>EPAS NC II</p></div>
-      <div style="text-align: center;"><img src="FOS NCII.png" class="cert-img" alt="FOS NCII"><p>FOS NC II</p></div>
+      <div style="text-align: center;"><img src="certificates/CSS NCII.png" class="cert-img" alt="CSS NCII"><p>CSS NC II</p></div>
+      <div style="text-align: center;"><img src="certificates/EPAS NCII.png" class="cert-img" alt="EPAS NCII"><p>EPAS NC II</p></div>
+      <div style="text-align: center;"><img src="certificates/FOS NCII.png" class="cert-img" alt="FOS NCII"><p>FOS NC II</p></div>
     </div>
   </section>
 
@@ -491,6 +678,33 @@
         grid.style.display = "grid";
         btn.innerText = "Hide Services";
         grid.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function toggleSeminars() {
+      const gallery = document.getElementById('seminars-gallery');
+      const text = document.getElementById('seminars-btn-text');
+      if (gallery.style.display === "grid") {
+        gallery.style.display = "none";
+        text.innerText = "CLICK TO VIEW IMAGES";
+      } else {
+        gallery.style.display = "grid";
+        text.innerText = "HIDE IMAGES";
+        gallery.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const icon = document.querySelector('.theme-toggle i');
+      body.classList.toggle('light-mode');
+      
+      if (body.classList.contains('light-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
       }
     }
   </script>
