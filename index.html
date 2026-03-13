@@ -207,6 +207,488 @@
     body.light-mode .timeline-content:hover {
       border-color: var(--primary);
     }
+
+    /* ====== GALLERY SECTION ====== */
+    .gallery-section {
+      padding: 100px 8% 60px;
+    }
+    
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .gallery-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, var(--text), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .gallery-header p {
+      opacity: 0.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Filter Buttons */
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    
+    .filter-btn {
+      padding: 10px 24px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(34,211,238,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .filter-btn:hover::before {
+      left: 100%;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    /* Gallery Grid - Masonry Layout */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .gallery-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .gallery-item.hide {
+      display: none;
+    }
+    
+    .gallery-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(34,211,238,0.15);
+      transform: translateY(-5px);
+    }
+    
+    /* Image Container */
+    .gallery-image-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .gallery-image-wrapper img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .gallery-item:hover .gallery-image-wrapper img {
+      transform: scale(1.15);
+    }
+    
+    /* Overlay */
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 40%,
+        rgba(2,6,23,0.9) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    /* Category Badge */
+    .gallery-category {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      padding: 6px 14px;
+      background: rgba(108, 99, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: white;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+    
+    .gallery-item:hover .gallery-category {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    /* Expand Icon */
+    .gallery-expand {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      width: 60px;
+      height: 60px;
+      background: rgba(34, 211, 238, 0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .gallery-expand i {
+      color: var(--accent);
+      font-size: 1.3rem;
+    }
+    
+    .gallery-item:hover .gallery-expand {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    
+    /* Gallery Info */
+    .gallery-info {
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+    
+    .gallery-item:hover .gallery-info {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .gallery-info h4 {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+    
+    .gallery-info p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+    
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(2,6,23,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+    
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.4s ease;
+    }
+    
+    .lightbox.active .lightbox-content {
+      transform: scale(1);
+    }
+    
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+    
+    .lightbox-details {
+      text-align: center;
+      padding: 25px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      margin-top: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .lightbox-details h3 {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    
+    .lightbox-details p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10000;
+    }
+    
+    .lightbox-close:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: rotate(90deg);
+    }
+    
+    .lightbox-close i {
+      color: var(--text);
+      font-size: 1.2rem;
+    }
+    
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .lightbox-nav:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .lightbox-nav i {
+      color: var(--text);
+    }
+    
+    .lightbox-prev {
+      left: 30px;
+    }
+    
+    .lightbox-next {
+      right: 30px;
+    }
+    
+    /* Lazy Load Placeholder */
+    .gallery-image-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      animation: shimmer 1.5s infinite;
+    }
+    
+    .gallery-image-wrapper.loaded::after {
+      display: none;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    /* Parallax Effect on Hover */
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(34,211,238,0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .gallery-item:hover::before {
+      opacity: 1;
+    }
+    
+    /* Responsive Gallery */
+    @media (max-width: 768px) {
+      .gallery-section {
+        padding: 80px 5% 40px;
+      }
+      
+      .gallery-filters {
+        gap: 8px;
+      }
+      
+      .filter-btn {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+      }
+      
+      .lightbox-nav {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery-image-wrapper img {
+        height: 220px;
+      }
+    }
+
+    /* Light mode adjustments for gallery */
+    body.light-mode .gallery-item {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    body.light-mode .gallery-overlay {
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 40%,
+        rgba(248,250,252,0.95) 100%
+      );
+    }
+    
+    body.light-mode .gallery-info h4 {
+      color: #1e293b;
+    }
+    
+    body.light-mode .gallery-info p {
+      color: rgba(30,41,59,0.7);
+    }
+    
+    body.light-mode .lightbox {
+      background: rgba(248,250,252,0.98);
+    }
+    
+    body.light-mode .lightbox-details {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    body.light-mode .lightbox-details h3 {
+      color: var(--primary);
+    }
+    
+    body.light-mode .lightbox-details p {
+      color: rgba(30,41,59,0.7);
+    }
+    
+    body.light-mode .lightbox-close,
+    body.light-mode .lightbox-nav {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    body.light-mode .lightbox-close i,
+    body.light-mode .lightbox-nav i {
+      color: #1e293b;
+    }
+    
+    body.light-mode .gallery-category {
+      background: rgba(108, 99, 255, 0.9);
+    }
   </style>
 </head>
 <body>
@@ -220,8 +702,9 @@
         <li><a href="#education">Education</a></li>
         <li><a href="#work">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#services">Services</a></li>
         <li><a href="#certificates">Credentials</a></li>
+        <li><a href="#tech-stack">Tech Stack</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Light/Dark Mode">
@@ -425,11 +908,28 @@
   </section>
 
   <section id="projects" class="reveal">
-    <h2 style="font-size: 2.5rem; margin-bottom: 10px; text-align: center;">Portfolio Projects</h2>
+<h2 style="font-size: 2.5rem; margin-bottom: 10px; text-align: center;">Portfolio Projects</h2>
     <p style="opacity: 0.7; margin-bottom: 30px; text-align: center;">Real-world solutions built during my academic and professional journey.</p>
 
-    <div class="grid">
- <div class="card">
+    <!-- Filter Buttons -->
+    <div class="gallery-filters" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 40px;">
+      <button class="filter-btn active" data-filter="all" style="padding: 10px 24px; border: 1px solid rgba(255,255,255,0.15); background: var(--card); color: var(--text); border-radius: 30px; cursor: pointer; font-size: 0.85rem; font-weight: 500;">All Projects</button>
+      <button class="filter-btn" data-filter="website" style="padding: 10px 24px; border: 1px solid rgba(255,255,255,0.15); background: var(--card); color: var(--text); border-radius: 30px; cursor: pointer; font-size: 0.85rem; font-weight: 500;">Website</button>
+      <button class="filter-btn" data-filter="web-system" style="padding: 10px 24px; border: 1px solid rgba(255,255,255,0.15); background: var(--card); color: var(--text); border-radius: 30px; cursor: pointer; font-size: 0.85rem; font-weight: 500;">Web Application</button>
+    </div>
+
+<div class="grid" id="projects-grid">
+     <!-- New Perissos Pizza Card -->
+     <div class="card" data-category="website">
+       <span class="badge">Client Project</span>
+       <h3 style="color: var(--accent);">Perissos Pizza</h3>
+       <p style="font-size: 0.9rem; margin: 15px 0;">Modern responsive website for Perissos Pizza featuring menu showcase, online ordering, and contact features. <a href="https://perissospizza.netlify.app/" target="_blank" style="color: var(--accent); text-decoration: none;"></a></p>
+       <div class="skill-tag">HTML5</div> <div class="skill-tag">CSS3</div> <div class="skill-tag">JavaScript</div>
+       <div style="text-align: center; margin-top: 15px;">
+         <a href="https://perissospizza.netlify.app/" target="_blank" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">Live Demo</a>
+       </div>
+     </div>
+ <div class="card" data-category="web-system">
         <span class="badge">Latest Project</span>
         <h3 style="color: var(--accent);">Smart Gym Pro </h3>
         <p style="font-size: 0.9rem; margin: 15px 0;">A web-based system for gym operations with QR code attendance,Point of Sale(POS), member management, payment processing, and analytics for efficient gym workflow.</p>
@@ -440,7 +940,7 @@
       </div>
 
       
-      <div class="card">
+      <div class="card" data-category="web-system">
         <span class="badge">⭐ Featured Capstone</span>
         <h3 style="color: var(--accent);">Employee Work Schedule and Leave Management System</h3>
         <p style="font-size: 0.9rem; margin: 15px 0;">A full-stack system that digitizes employee leave filing and scheduling for organizations.</p>
@@ -455,7 +955,7 @@
       
 
       
-      <div class="card">
+      <div class="card" data-category="web-system">
         <span class="badge">Work Project</span>
         <h3 style="color: var(--accent);">Scheduling System</h3>
         <p style="font-size: 0.9rem; margin: 15px 0;">A system developed for the IT Technical Team to automate scheduling, allowing selection of employees, assignment of projects, and tracking of time in/out.</p>
@@ -465,7 +965,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-category="website">
         <span class="badge">Sample Website</span>
         <h3 style="color: var(--accent);">I Love San Miguel</h3>
         <p style="font-size: 0.9rem; margin: 15px 0;">A localized web platform designed to showcase and promote the local attractions and community of San Miguel.</p>
@@ -475,7 +975,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-category="website">
         <span class="badge">New Website</span>
         <h3 style="color: var(--accent);">Bio-Enzyme Premium</h3>
         <p style="font-size: 0.9rem; margin: 15px 0;">Discover Bio-Enzyme Premium, a natural enzyme extract that boosts immunity and restores vitality through raw fruits, vegetables, and herbs.</p>
@@ -485,7 +985,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" data-category="web-system">
         <span class="badge">Updated Project</span>
         <h3 style="color: var(--accent);">Resort Website with Online Booking System</h3>
         <p style="font-size: 0.9rem; margin: 15px 0;">A promotional website integrated with an online booking system that allows customers to view resort information and reserve rooms or cottages directly through the website.</p>
@@ -495,42 +995,6 @@
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <section id="services" class="reveal">
-    <h2 style="font-size: 2.5rem; margin-bottom: 10px; text-align: center;">IT Services & Inquiries</h2>
-    <p style="opacity: 0.7; margin-bottom: 30px; text-align: center;">Offering professional IT solutions tailored to your business needs. From custom systems to hardware support, let's discuss how I can assist you.</p>
-
-    <div style="text-align: center; margin-bottom: 30px;">
-      <button onclick="toggleServices()" class="btn btn-primary" id="services-btn">View Services Offered</button>
-    </div>
-
-    <div id="services-grid" style="display: none;">
-      <div class="card">
-        <i class="fas fa-code" style="color: var(--accent); font-size: 2rem; margin-bottom: 20px;"></i>
-        <h3>Custom IT Systems & Websites</h3>
-        <p style="font-size: 0.9rem; margin: 15px 0;">I specialize in developing secure and efficient custom IT systems tailored to your business needs, including promotional websites to enhance your online presence and management systems for streamlined operations. We can discuss specific features, pricing, and agreements to align with your requirements.</p>
-        <div class="skill-tag">Web Development</div> <div class="skill-tag">System Design</div> <div class="skill-tag">Database Management</div>
-      </div>
-
-      <div class="card">
-        <i class="fas fa-tools" style="color: var(--accent); font-size: 2rem; margin-bottom: 20px;"></i>
-        <h3>Hardware & Software Support</h3>
-        <p style="font-size: 0.9rem; margin: 15px 0;">Offering professional hardware and software support services, such as Microsoft 365 installation, Windows activation, operating system upgrades or downgrades (e.g., Windows 8 to 10, Windows 11 Pro to 10), laptop/PC reset or formatting, laptop troubleshooting and repairs, and thorough cleaning to optimize performance and extend device lifespan.</p>
-        <div class="skill-tag">PC Maintenance</div> <div class="skill-tag">OS Upgrades</div> <div class="skill-tag">Hardware Repair</div>
-      </div>
-
-      <div class="card">
-        <i class="fas fa-comments" style="color: var(--accent); font-size: 2rem; margin-bottom: 20px;"></i>
-        <h3>Inquire & Negotiate</h3>
-        <p style="font-size: 0.9rem; margin: 15px 0;">Ready to discuss your project or service needs? Contact me via Facebook, phone, or email to explore pricing, features, agreements, and any other details. Let's collaborate to bring your vision to life.</p>
-        <div class="btn-group" style="margin-top: 20px;">
-          <a href="https://www.facebook.com/share/17RFFbT3fj/?mibextid=wwXIfr" target="_blank" class="btn btn-primary"><i class="fab fa-facebook"></i> Chat on Facebook</a>
-          <a href="tel:09917824940" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
-          <a href="mailto:tyrondelvalle01@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Email Me</a>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -625,6 +1089,188 @@
         <div class="skill-tag">Cyber Hygiene</div> <div class="skill-tag">IT Troubleshooting</div> <div class="skill-tag">System Maintenance</div> <div class="skill-tag">Backup & Recovery</div> <div class="skill-tag">Digital Literacy</div>
       </div>
     </div>
+  </section>
+
+  <!-- ====== GALLERY SECTION ====== -->
+  <section id="gallery" class="gallery-section">
+    <div class="gallery-header">
+      <h2>Training & Events Gallery</h2>
+      <p>Highlights from my training sessions, certifications, and events. These images showcase my participation in various IT workshops, seminars, and community activities.</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/barangayan at san miguel with their mayor.jpg" alt="Barangayan at San Miguel with Their Mayor" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Barangayan at San Miguel with Their Mayor</h4>
+            <p>Invited by LGU San Miguel for the EBPLS system demonstration - a Province of Leyte project</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/barangayan at San Miguel, Leyte.jpg" alt="Barangayan at San Miguel, Leyte" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>Barangayan at San Miguel, Leyte</h4>
+            <p>Community event at San Miguel Leyte</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/BIPSU Certificates.jpg" alt="BIPSU Certificates" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>BIPSU Certificates</h4>
+            <p>Certificate of completion from BIPSU training program</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/BIPSU Ocular Inspection.jpg" alt="BIPSU Ocular Inspection" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>BIPSU Ocular Inspection</h4>
+            <p>Ocular inspection visit to BIPSU for practical training</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/DICT certification.jpg" alt="DICT Certification" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>DICT Certification</h4>
+            <p>Digital literacy certification from DICT</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/dict hands on for cctv.jpg" alt="DICT Hands-on for CCTV" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>DICT Hands-on for CCTV</h4>
+            <p>Practical training on CCTV installation and configuration</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/dict training day 2.jpg" alt="DICT Training Day 2" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>DICT Training Day 2</h4>
+            <p>Second day of intensive DICT training session</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/dict training.jpg" alt="DICT Training" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>DICT Training</h4>
+            <p>Comprehensive DICT training program for IT professionals</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/Orientation of Document Tracking System in Lgu Santa fe.jpg" alt="DTS Orientation at LGU Santa Fe" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>DTS Orientation at LGU Santa Fe</h4>
+            <p>Orientation of Document Tracking System in LGU Santa Fe</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/tp link day 1 training.jpg" alt="TP-Link Day 1 Training" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>TP-Link Day 1 Training</h4>
+            <p>First day of TP-Link networking equipment training</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/TP-link awarding.jpg" alt="TP-Link Awarding" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>TP-Link Awarding</h4>
+            <p>Certificate awarding ceremony for TP-Link Omada and VIGI certifications</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-image-wrapper">
+          <img src="gallery/tplink training.jpg" alt="TP-Link Training" loading="lazy">
+        </div>
+        <div class="gallery-expand"><i class="fas fa-expand"></i></div>
+        <div class="gallery-overlay">
+          <div class="gallery-info">
+            <h4>TP-Link Training</h4>
+            <p>TP-Link Omada and VIGI certification training program</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <img src="" alt="" class="lightbox-image" id="lightbox-img">
+      <div class="lightbox-details">
+        <h3 id="lightbox-title">Project Title</h3>
+        <p id="lightbox-desc">Project description goes here.</p>
+      </div>
+    </div>
+    <div class="lightbox-close" id="lightbox-close"><i class="fas fa-times"></i></div>
+    <div class="lightbox-nav lightbox-prev" id="lightbox-prev"><i class="fas fa-chevron-left"></i></div>
+    <div class="lightbox-nav lightbox-next" id="lightbox-next"><i class="fas fa-chevron-right"></i></div>
+  </div>
 
   <section id="contact" class="reveal" style="text-align: center; min-height: 40vh;">
     <h2 style="font-size: 2.5rem;">Let's Build the Future</h2>
@@ -707,7 +1353,206 @@
         icon.classList.add('fa-moon');
       }
     }
+
+    // ====== GALLERY FUNCTIONALITY ======
+    
+    // Gallery items data for lightbox
+    const galleryData = [
+      { src: 'gallery/barangayan at san miguel with their mayor.jpg', title: 'Barangayan at San Miguel with Their Mayor', desc: 'Invited by LGU San Miguel for the EBPLS system demonstration - a Province of Leyte project' },
+      { src: 'gallery/barangayan at San Miguel, Leyte.jpg', title: 'Barangayan at San Miguel, Leyte', desc: 'Community event at San Miguel Leyte' },
+      { src: 'gallery/BIPSU Certificates.jpg', title: 'BIPSU Certificates', desc: 'Certificate of completion from BIPSU training program' },
+      { src: 'gallery/BIPSU Ocular Inspection.jpg', title: 'BIPSU Ocular Inspection', desc: 'Ocular inspection visit to BIPSU for practical training' },
+      { src: 'gallery/DICT certification.jpg', title: 'DICT Certification', desc: 'Digital literacy certification from DICT (Department of Information and Communications Technology)' },
+      { src: 'gallery/dict hands on for cctv.jpg', title: 'DICT Hands-on for CCTV', desc: 'Practical training on CCTV installation and configuration' },
+      { src: 'gallery/dict training day 2.jpg', title: 'DICT Training Day 2', desc: 'Second day of intensive DICT training session' },
+      { src: 'gallery/dict training.jpg', title: 'DICT Training', desc: 'Comprehensive DICT training program for IT professionals' },
+      { src: 'gallery/Orientation of Document Tracking System in Lgu Santa fe.jpg', title: 'DTS Orientation at LGU Santa Fe', desc: 'Orientation of Document Tracking System in LGU Santa Fe' },
+      { src: 'gallery/tp link day 1 training.jpg', title: 'TP-Link Day 1 Training', desc: 'First day of TP-Link networking equipment training' },
+      { src: 'gallery/TP-link awarding.jpg', title: 'TP-Link Awarding', desc: 'Certificate awarding ceremony for TP-Link Omada and VIGI certifications' },
+      { src: 'gallery/tplink training.jpg', title: 'TP-Link Training', desc: 'TP-Link Omada and VIGI certification training program' }
+    ];
+
+    // DOM Elements
+    const projectFilterBtns = document.querySelectorAll('#projects .filter-btn');
+    const projectItems = document.getElementById('projects-grid').children;
+    
+    const filterBtns = document.querySelectorAll('#gallery .filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    
+    let currentIndex = 0;
+    let visibleItems = [];
+
+    // Initialize gallery
+    function initProjectFilters() {
+      projectFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+          projectFilterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          Array.from(projectItems).forEach(item => {
+            if (filter === 'all' || item.dataset.category === filter) {
+              item.style.display = 'block';
+              item.style.animation = 'fadeInUp 0.5s ease forwards';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+    
+    function initGallery() {
+      // Set up filter buttons
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => filterGallery(btn.dataset.filter));
+      });
+
+      
+      // Set up gallery items click
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => openLightbox(index));
+      });
+      
+      // Set up lightbox controls
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+      lightboxNext.addEventListener('click', () => navigateLightbox(1));
+      
+      // Close on background click
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        if (e.key === 'ArrowRight') navigateLightbox(1);
+      });
+      
+      // Lazy loading
+      lazyLoadImages();
+      
+      // Scroll reveal for gallery items
+      setTimeout(() => {
+        galleryItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('visible');
+          }, index * 100);
+        });
+      }, 500);
+    }
+
+    // Filter gallery items
+    function filterGallery(category) {
+      // Update active button
+      filterBtns.forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+      
+      // Filter items
+      visibleItems = [];
+      galleryItems.forEach((item, index) => {
+        const itemCategory = item.dataset.category;
+        
+        if (category === 'all' || itemCategory === category) {
+          item.classList.remove('hide');
+          item.style.animation = 'fadeInUp 0.5s ease forwards';
+          visibleItems.push(index);
+        } else {
+          item.classList.add('hide');
+        }
+      });
+    }
+
+    // Open lightbox
+    function openLightbox(index) {
+      // Get visible items indices
+      visibleItems = [];
+      galleryItems.forEach((item, i) => {
+        if (!item.classList.contains('hide')) {
+          visibleItems.push(i);
+        }
+      });
+      
+      // Find index in visible items
+      currentIndex = visibleItems.indexOf(index);
+      if (currentIndex === -1) currentIndex = 0;
+      
+      updateLightboxContent();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Update lightbox content
+    function updateLightboxContent() {
+      const actualIndex = visibleItems[currentIndex];
+      const data = galleryData[actualIndex];
+      
+      lightboxImg.src = data.src;
+      lightboxTitle.textContent = data.title;
+      lightboxDesc.textContent = data.desc;
+    }
+
+    // Navigate lightbox
+    function navigateLightbox(direction) {
+      currentIndex += direction;
+      
+      if (currentIndex < 0) {
+        currentIndex = visibleItems.length - 1;
+      } else if (currentIndex >= visibleItems.length) {
+        currentIndex = 0;
+      }
+      
+      updateLightboxContent();
+    }
+
+    // Close lightbox
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Lazy loading images
+    function lazyLoadImages() {
+      const lazyImages = document.querySelectorAll('.gallery-image-wrapper img');
+      
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.onload = () => {
+              img.parentElement.classList.add('loaded');
+            };
+            observer.unobserve(img);
+          }
+        });
+      }, {
+        rootMargin: '50px 0px',
+        threshold: 0.1
+      });
+      
+      lazyImages.forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      initProjectFilters();
+      initGallery();
+    });
   </script>
+
 
 </body>
 </html>
