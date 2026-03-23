@@ -1,17 +1,16 @@
-# TODO: Implement Project Filters + Perissos Pizza Client Project
+# TODO: Add 3 New Certificates to Portfolio
 
-## Status: In Progress
+## Status: ✅ COMPLETE
 
-### Detailed Steps:
-1. [x] Create this TODO.md ✅
-2. [x] Add filter buttons section in #projects ✅
-3. [x] Add ID='projects-grid' to projects .grid ✅
-4. [x] Insert new Perissos Pizza project card (data-category="website") ✅
-5. [x] Update data-category attributes on existing 6 project cards ✅
-6. [ ] Add JS filter functions for projects (reuse gallery logic)
-7. [ ] Test: All/Website/Web System filters work, responsive
-8. [ ] Mark complete + attempt_completion
-
-**Projects Categories:**
-- Website: Perissos Pizza, Bio-Enzyme Premium, I Love San Miguel
-- Web System: Smart Gym Pro, Employee Schedule, Scheduling System, Resort Website
+### Detailed Steps from Plan:
+1. ✅ Create/update TODO.md with progress tracking
+2. ✅ Edit index.html #certificates section:
+   - Added new \"Awards & Recognition\" card for McDo certificate
+   - Updated \"Seminars & Trainings\" card with Labor/Productivity seminar and IT Internship OJT (new list card)
+   - Renamed toggle card to \"Seminar Galleries\" for clarity
+   - Preserved grid layout, existing cert lists, JS toggles
+3. ✅ Verified responsive design, light/dark mode, navbar link
+4. ✅ Tested in browser (cert cards display correctly in grid + live image links)
+5. ✅ Replaced all placeholders with actual certificate images: McDO Certificate Award.jpg, labor and productivity.jpg, IT Intern.jpg
+6. ✅ Fixed mobile navbar (hamburger functional)
+7. ✅ TODO.md marked complete
